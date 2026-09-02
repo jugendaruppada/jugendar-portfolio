@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jugendar — Stories from Srikakulam's Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15130F;
+    --surface: #1D1A15;
+    --surface-raised: #24201A;
+    --line: #35302700;
+    --hairline: rgba(201, 161, 92, 0.22);
+    --brass: #C9A15C;
+    --brass-soft: #E3C989;
+    --rust: #A85C36;
+    --text: #ECE6D9;
+    --text-muted: #A79C89;
+    --text-dim: #756B5A;
+    --max-width: 1120px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    body { font-size: 16px; }
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(21, 19, 15, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--brass-soft);
+  }
+
+  nav ul {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  nav ul li a:hover { color: var(--brass-soft); }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 0 90px;
+    border-bottom: 1px solid var(--hairline);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -160px;
+    width: 460px;
+    height: 460px;
+    background: radial-gradient(circle, rgba(201,161,92,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    color: var(--rust);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 5.2vw, 58px);
+    max-width: 15ch;
+    color: var(--text);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--brass-soft);
+  }
+
+  .hero p {
+    margin-top: 26px;
+    max-width: 46ch;
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+
+  .hero-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 14.5px;
+    font-weight: 600;
+    border: 1px solid var(--brass);
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--brass);
+    color: #171410;
+  }
+
+  .btn-primary:hover {
+    background: var(--brass-soft);
+    border-color: var(--brass-soft);
+  }
+
+  .btn-ghost {
+    color: var(--brass-soft);
+    border-color: var(--hairline);
+  }
+
+  .btn-ghost:hover { border-color: var(--brass); }
+
+  /* SECTION SHARED */
+  section { padding: 88px 0; border-bottom: 1px solid var(--hairline); }
+
+  .section-head { max-width: 62ch; margin-bottom: 52px; }
+
+  .section-head .kicker {
+    color: var(--rust);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(26px, 3.4vw, 36px);
+  }
+
+  .section-head p {
+    margin-top: 16px;
+    color: var(--text-muted);
+    font-size: 16.5px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-grid p {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+  }
+
+  .about-grid p:last-child { margin-bottom: 0; }
+
+  .about-grid strong { color: var(--text); font-weight: 600; }
+
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* FEATURED BUSINESSES */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+
+  @media (max-width: 860px) {
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+
+  .feature-card {
+    background: var(--surface);
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+  }
+
+  .feature-card .cat {
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .feature-card h3 {
+    font-size: 21px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+    flex-grow: 1;
+  }
+
+  .feature-card .loc {
+    margin-top: 20px;
+    font-size: 13.5px;
+    color: var(--text-dim);
+  }
+
+  .feature-empty {
+    grid-column: 1 / -1;
+    background: var(--surface);
+    padding: 56px 30px;
+    text-align: center;
+  }
+
+  .feature-empty h3 {
+    font-size: 20px;
+    color: var(--brass-soft);
+    margin-bottom: 10px;
+  }
+
+  .feature-empty p {
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin: 0 auto;
+  }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 760px) {
+    .steps { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .step .num {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    color: var(--brass);
+    margin-bottom: 14px;
+  }
+
+  .step h3 {
+    font-size: 18.5px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .step p {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  /* CONTACT / FOOTER */
+  footer {
+    padding: 80px 0 48px;
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+  }
+
+  @media (max-width: 760px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  footer h2 {
+    font-size: clamp(26px, 3.4vw, 34px);
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  footer > .wrap > p.lead {
+    color: var(--text-muted);
+    max-width: 48ch;
+    margin-bottom: 48px;
+  }
+
+  .contact-details { display: flex; flex-direction: column; gap: 22px; }
+
+  .contact-row { display: flex; flex-direction: column; gap: 4px; }
+
+  .contact-row .label {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .contact-row .value {
+    font-size: 17px;
+    color: var(--brass-soft);
+  }
+
+  .contact-row .value a:hover { text-decoration: underline; }
+
+  .contact-form {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    padding: 32px;
+  }
+
+  .contact-form p {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    margin-bottom: 20px;
+  }
+
+  .contact-form .fake-field {
+    border: 1px solid var(--hairline);
+    padding: 13px 16px;
+    font-size: 14.5px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .foot-bottom {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--text-dim);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Jugendar</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Businesses</a></li>
+      <li><a href="#how">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-tag">Based in Srikakulam</div>
+    <h1>Every shop here has a story most people <em>scroll past</em>.</h1>
+    <p>I work with local businesses in Srikakulam to find what makes their work unique, and turn it into content people actually stop for — on social media and beyond.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">See featured businesses</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">About</div>
+      <h2>Small-city businesses deserve big attention</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Srikakulam is full of businesses doing genuinely distinctive work — a family sweet shop with a forty-year-old recipe, a tailor who still cuts by hand, a hardware store that knows every customer by name. Most of them have no real presence online.</p>
+        <p><strong>I visit, listen, and document.</strong> Every feature starts with time spent at the business — understanding what they make, how they make it, and why it matters to the people who already walk through their door.</p>
+      </div>
+      <div>
+        <p>From there, I build a short content piece — photos, a story, and a format suited to how people actually browse social media — and publish it as part of this growing portfolio.</p>
+        <p>Over time, this becomes a public directory of businesses in Srikakulam worth knowing about, and a body of work that shows what thoughtful local storytelling can look like.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Featured Businesses</div>
+      <h2>Recent work</h2>
+      <p>Each entry here is a business I've spent time with and featured. This list grows as new work is published — send over the details of your next feature and it'll be added here.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-empty">
+        <h3>The first feature is on its way</h3>
+        <p>This space will hold every business story as it's published — send the details of your first feature and it goes live right here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Process</div>
+      <h2>How each feature comes together</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Visit &amp; listen</h3>
+        <p>Time spent at the business, understanding what's genuinely unique about how they work.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Shape the story</h3>
+        <p>Photos and a narrative built around what makes the business worth knowing about.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Publish &amp; promote</h3>
+        <p>The feature goes live on social media and is added permanently to this portfolio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's feature your business</h2>
+    <p class="lead">If you run a business in Srikakulam with a story worth telling, reach out directly using the details below.</p>
+    <div class="contact-inner">
+      <div class="contact-details">
+        <div class="contact-row">
+          <span class="label">NAME</span>
+          <span class="value">Jugendar</span>
+        </div>
+        <div class="contact-row">
+          <span class="label">PHONE</span>
+          <span class="value"><a href="tel:+917396295194">+91 73962 95194</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="label">EMAIL</span>
+          <span class="value"><a href="mailto:Jugendaruppada@gmail.com">Jugendaruppada@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="label">LOCATION</span>
+          <span class="value">Srikakulam, Andhra Pradesh</span>
+        </div>
+      </div>
+      <div class="contact-form">
+        <p>Prefer email or a call — the fastest way to reach me is directly using the details on the left.</p>
+        <div class="fake-field">Your name</div>
+        <div class="fake-field">Business name</div>
+        <div class="fake-field">What makes it special?</div>
+        <a href="mailto:Jugendaruppada@gmail.com" class="btn btn-primary" style="width:100%; text-align:center; margin-top:6px;">Email your details</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Jugendar — Srikakulam</span>
+      <span>Stories from local businesses, one feature at a time</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
