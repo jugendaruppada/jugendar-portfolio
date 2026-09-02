@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Jugendar — Jugendar Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15130F;
+    --surface: #1D1A15;
+    --surface-raised: #24201A;
+    --hairline: rgba(201, 161, 92, 0.22);
+    --brass: #C9A15C;
+    --brass-soft: #E3C989;
+    --rust: #A85C36;
+    --text: #ECE6D9;
+    --text-muted: #A79C89;
+    --text-dim: #756B5A;
+    --max-width: 1120px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    body { font-size: 16px; }
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(21, 19, 15, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo { font-family: 'Fraunces', serif; font-size: 20px; color: var(--brass-soft); }
+
+  nav ul { display: flex; gap: 36px; list-style: none; }
+  nav ul li a { font-size: 14px; color: var(--text-muted); transition: color 0.2s ease; }
+  nav ul li a:hover { color: var(--brass-soft); }
+  nav ul li a.active { color: var(--brass-soft); }
+
+  @media (max-width: 640px) { nav ul { display: none; } }
+
+  /* PROFILE HERO */
+  .profile-hero {
+    padding: 88px 0 76px;
+    border-bottom: 1px solid var(--hairline);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-hero::before {
+    content: '';
+    position: absolute;
+    top: -140px;
+    left: -160px;
+    width: 460px;
+    height: 460px;
+    background: radial-gradient(circle, rgba(201,161,92,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  @media (max-width: 700px) {
+    .profile-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    .profile-photo { margin: 0 auto; }
+  }
+
+  .profile-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    box-shadow: 0 0 0 10px rgba(201,161,92,0.05);
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .profile-tag {
+    color: var(--rust);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .profile-hero h1 {
+    font-size: clamp(32px, 4.6vw, 48px);
+    color: var(--text);
+  }
+
+  .profile-hero .role {
+    margin-top: 12px;
+    font-size: 17px;
+    color: var(--brass-soft);
+  }
+
+  /* SECTION SHARED */
+  section { padding: 80px 0; border-bottom: 1px solid var(--hairline); }
+
+  .section-head { max-width: 62ch; margin-bottom: 44px; }
+
+  .section-head .kicker {
+    color: var(--rust);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .section-head h2 { font-size: clamp(24px, 3vw, 32px); }
+
+  /* BIO */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .bio-grid p { color: var(--text-muted); margin-bottom: 18px; }
+  .bio-grid p:last-child { margin-bottom: 0; }
+  .bio-grid strong { color: var(--text); font-weight: 600; }
+
+  @media (max-width: 760px) {
+    .bio-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* DETAILS TABLE */
+  .detail-list {
+    border: 1px solid var(--hairline);
+  }
+
+  .detail-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .detail-row:last-child { border-bottom: none; }
+
+  @media (max-width: 600px) {
+    .detail-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 22px; }
+  }
+
+  .detail-row .label {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-dim);
+  }
+
+  .detail-row .value { color: var(--text); font-size: 16px; }
+  .detail-row .value a:hover { color: var(--brass-soft); text-decoration: underline; }
+
+  /* CONTACT CTA */
+  footer { padding: 72px 0 48px; }
+
+  footer h2 { font-size: clamp(24px, 3vw, 32px); margin-bottom: 14px; }
+
+  footer p.lead { color: var(--text-muted); max-width: 48ch; margin-bottom: 32px; }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 14.5px;
+    font-weight: 600;
+    border: 1px solid var(--brass);
+    background: var(--brass);
+    color: #171410;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover { background: var(--brass-soft); border-color: var(--brass-soft); }
+
+  .foot-bottom {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--text-dim);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo">Jugendar</a>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#work">Businesses</a></li>
+      <li><a href="index.html#how">Process</a></li>
+      <li><a href="about.html" class="active">Profile</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="profile-hero">
+  <div class="wrap">
+    <div class="profile-grid">
+      <div class="profile-photo">
+        <img src="jugendar-profile.webp" alt="Photo of Jugendar">
+      </div>
+      <div>
+        <div class="profile-tag">The person behind this portfolio</div>
+        <h1>Jugendar</h1>
+        <p class="role">Founder of Jugendar Portfolio, Srikakulam</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Who I am</div>
+      <h2>A bit about me</h2>
+    </div>
+    <div class="bio-grid">
+      <div>
+        <p>I'm a <strong>first-year MBBS student at RIMS, Srikakulam</strong>. Alongside my studies, I run this portfolio as a personal project to help local businesses in Srikakulam get the social media presence they deserve.</p>
+        <p>Srikakulam is a third-tier city with no shortage of skilled, dedicated business owners — but most of them have little to no visibility online. I saw that gap and decided to do something about it.</p>
+      </div>
+      <div>
+        <p><strong>My aim</strong> is to build this into a genuine portfolio business — visiting local shops and businesses across Srikakulam, understanding what makes each one unique, and turning that into content that gets them seen on social media.</p>
+        <p>Every business featured on this site is one I've personally visited and worked with. This page exists so anyone visiting the portfolio knows exactly who's behind it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Details</div>
+      <h2>Get in touch</h2>
+    </div>
+    <div class="detail-list">
+      <div class="detail-row">
+        <span class="label">NAME</span>
+        <span class="value">Jugendar</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">CURRENTLY</span>
+        <span class="value">First-year MBBS student, RIMS Srikakulam</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">PHONE</span>
+        <span class="value"><a href="tel:+917396295194">+91 73962 95194</a></span>
+      </div>
+      <div class="detail-row">
+        <span class="label">EMAIL</span>
+        <span class="value"><a href="mailto:Jugendaruppada@gmail.com">Jugendaruppada@gmail.com</a></span>
+      </div>
+      <div class="detail-row">
+        <span class="label">LOCATION</span>
+        <span class="value">Srikakulam, Andhra Pradesh</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Have a business worth featuring?</h2>
+    <p class="lead">Reach out directly — email or call works best.</p>
+    <a href="mailto:Jugendaruppada@gmail.com" class="btn">Email Jugendar</a>
+    <div class="foot-bottom">
+      <span>© 2026 Jugendar — Srikakulam</span>
+      <a href="index.html">Back to portfolio home</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
