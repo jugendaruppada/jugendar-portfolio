@@ -92,8 +92,49 @@
 
   nav ul li a:hover { color: var(--brass-soft); }
 
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  .nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background: var(--brass-soft);
+    display: block;
+  }
+
   @media (max-width: 640px) {
-    nav ul { display: none; }
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--hairline);
+      padding: 8px 20px 16px;
+    }
+
+    nav ul.open { display: flex; }
+
+    nav ul li a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--hairline);
+      font-size: 15px;
+    }
+
+    nav ul li:last-child a { border-bottom: none; }
+
+    .nav-toggle { display: flex; }
   }
 
   /* HERO */
@@ -394,7 +435,10 @@
 <nav>
   <div class="wrap">
     <div class="logo">Jugendar</div>
-    <ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="navMenu">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Businesses</a></li>
       <li><a href="#how">Process</a></li>
@@ -403,6 +447,11 @@
     </ul>
   </div>
 </nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function () {
+    document.getElementById('navMenu').classList.toggle('open');
+  });
+</script>
 
 <header class="hero">
   <div class="wrap">
